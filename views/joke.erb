@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Joke Repo</title>
+    <style type="text/css">
+      body {
+        width: 820px;
+      }
+      h1 {
+        color: #555;
+        border-bottom: 1px solid #ccc;
+      }
+      p {
+        color: #121212;
+        font: normal 14px/16px Helvetica, sans-serif;
+      }
+      input[type="text"] {
+        padding: 5px;
+        font: normal 14px/16px Helveticam sans-serif;
+        color: #555;
+      }
+    </style>
+  </head>
+ 
+  <body>
+      <h1>Joke Repo</h1>
+      <% if @joke %>
+      <%= "Joke Added!" %>
+      <% end %>
+      <h4>Add a Joke</h4>
+      <form action="http://itp.nyu.edu/~ck987/sinatra/joke-repo/new" method="GET">
+        <p><label>Joke </label><input type="text" name="joke" /></p>
+        <p><label>Joke Rating </label><input type="number" name="rating" min="1" max="5" /></p>
+        <p><input type="submit" value="Submit" /></p>
+      </form>
+      <h4>Joke Repo API</h4>
+<p><b>joke-repo/api.json</b> will return a random joke as JSON.  <br>
+<b>joke-repo/api.xml</b> will return a random joke as XML.</p>
+<h4>Current Jokes</h4>
+  <% @jokes.each do |joke| %>
+  <p><b><%="#{joke.joke}"%></b></p>
+  <p>Rating: <%="#{joke.rating}"%></p>
+  <% end %>
+  </ul>
+  </body>
+</html>
